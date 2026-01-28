@@ -9,7 +9,7 @@
         String email = request.getParameter("email");
 
         if (name != null && email != null) {
-            message = "Registration successful! Welcome, " + name + " 🎉";
+            message = "Registration successful! Welcome, " + name + " ";
         }
     }
 %>
