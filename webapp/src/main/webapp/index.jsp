@@ -1,28 +1,144 @@
-<form action="action_page.php">
-  <div class="container">
-    <h1>New user Register for DevOps Learning by V KISHOR KUMAR</h1>
-    <p>Please fill in this form to create an account for Devops.</p>
-    <hr>
-     
-    <label for="Name"><b>Enter YOUR Name</b></label>
-    <input type="text" placeholder="Enter Full Name" name="Name" id="Name" required>
-    <label for="mobile"><b>Enter YOUR mobile</b></label>
-    <input type="text" placeholder="Enter moible number" name="mobile" id="mobile" required>
-    <label for="email"><b>Enter YOUR Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-    <hr>
-    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-    <button type="submit" class="registerbtn">Register</button>
-  </div>
-  <div class="container signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
-   <h1> Thankyou, Happy Learning </h1>
+<%
+    String message = "";
+    if ("POST".equalsIgnoreCase(request.getMethod())) {
+        String name = request.getParameter("name");
+        String mobile = request.getParameter("mobile");
+        String email = request.getParameter("email");
 
-  
-</form>
+        if (name != null && email != null) {
+            message = "Registration successful! Welcome, " + name + " 🎉";
+        }
+    }
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DevOps Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        background: #fff;
+        width: 420px;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        margin-top: 25px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+
+    .info {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 13px;
+    }
+
+    .success {
+        text-align: center;
+        color: green;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>DevOps Learning</h1>
+    <div class="subtitle">Register by <b>V KISHOR KUMAR</b></div>
+
+    <% if (!message.isEmpty()) { %>
+        <div class="success"><%= message %></div>
+    <% } %>
+
+    <form method="post">
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <label>Mobile Number</label>
+        <input type="text" name="mobile" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirm" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="info">
+        Already have an account? <a href="#">Sign in</a>
+    </div>
+
+    <div class="info">
+        Thank you — Happy Learning 🚀
+    </div>
+</div>
+
+</body>
+</html>
