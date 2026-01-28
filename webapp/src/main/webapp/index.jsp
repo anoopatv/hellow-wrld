@@ -136,7 +136,7 @@
     </div>
 
     <div class="info">
-        Thank you — Happy Learning 🚀
+        Thank you — sad Learning 
     </div>
 </div>
 
